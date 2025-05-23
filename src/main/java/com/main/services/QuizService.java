@@ -49,10 +49,11 @@ public class QuizService {
 //        return new ResponseEntity<>("Quiz created successfully!", HttpStatus.CREATED);
 
         List<Question> questions = quesDao.findRandomQuestionsByCategory(category, numques);
-
         Quiz quiz = new Quiz();
+        quiz.getQuestions().addAll(questions);
+      
         quiz.setTitle(title);
-        quiz.setQuestions(questions);
+        quiz.setQuestions(quiz.getQuestions());
         quizDao.save(quiz);
 
         return new ResponseEntity<>("success", HttpStatus.CREATED);

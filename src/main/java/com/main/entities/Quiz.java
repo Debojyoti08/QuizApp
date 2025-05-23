@@ -2,6 +2,7 @@ package com.main.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,9 +17,9 @@ public class Quiz
     @JoinTable(
             name = "quiz_questions", // Optional but good to be explicit
             joinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "questions_id", referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id")
     )
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 
     public int getId() {
         return id;

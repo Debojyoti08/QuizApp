@@ -2,6 +2,8 @@ package com.main.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "question")
@@ -26,6 +28,9 @@ public class Question {
     private String difficultyLevel;
 
     private String category;
+    
+    @ManyToMany(mappedBy = "questions", cascade = CascadeType.ALL)
+    private List<Quiz> quizzes =  new ArrayList<>();
 
     public Question() {
     }
